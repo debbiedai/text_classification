@@ -102,7 +102,7 @@ def split_fold_(fold_num, save_path):
         df.to_csv(save_path + '/fold_' + str(i) + '.csv', index=False, header=['category', 'text'], encoding='utf-8-sig')
 
 
-def xml_to_tsv_(data_dir, label, save_tsv_name, with_filename):
+def xml_to_csv(data_dir, label, save_tsv_name, with_filename):
     file_name_list, text_list = [], []
     files = os.listdir(data_dir)
     for file in files:
@@ -146,8 +146,8 @@ def create_dataset(fold_path, fold_num, test_num, val_num, train_nums):
 
 
 if __name__ == '__main__':
-    xml_to_tsv_('./neg_text', 'negative', 'neg_text', False)
-    xml_to_tsv_('./pos_text', 'positive', 'pos_text', False)
+    xml_to_csv('./neg_text', 'negative', 'neg_text', False)
+    xml_to_csv('./pos_text', 'positive', 'pos_text', False)
     split_fold_(5, './dataset')
     test_list = [0,1,2,3,4]
     val_list = [1,2,3,4,0]
